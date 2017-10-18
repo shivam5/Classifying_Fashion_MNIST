@@ -1,0 +1,38 @@
+Classifying fashion MNIST data using bag-of-words
+==================================================
+Shivam Mittal
+2015CSB1032
+
+Abstract
+---------
+The task was to create a bag of-words based 
+matching/categorization solution on the MNIST-fashion
+database [1]. We created a global descriptor for each of the images. The
+descriptor was inspired from the HOG descriptor. Each descriptor was
+treated as a feature, and then k-means clustering was used to find the
+cluster centers which represented our visual words, from which a visual
+dictionary was created. Using the visual dictionary, histograms were created 
+for all the training and test images by using soft-assignment (weights
+were assigned to all the visual words based on the distance of that word
+from the image feature). Then for each test image, we matched the histogram of the 
+test image with all the histograms of the training images
+using chi-squared distance. A fixed number of training images (50 chosen empirically) 
+whose histogram had the minimum distance from test
+histogram were considered, each of those labels were considered and the
+label which had the majority vote was taken as the predicted label. We
+achieved an accuracy of 81.13% on the test set which can be considered
+as a good result considering only traditional computer vision techniques,
+and no ML based pipeline.
+
+Please read the report for more details.
+
+Running
+-----------
+Open matlab, navigate to this folder.
+Call RunAll_2015CSB1032() in the command window.
+Make sure the data files are present in the same folder.
+Keep he csv files in the same folder if present. You can download the precomputer csv file from here :
+https://drive.google.com/file/d/0B_lzdbRctAD_ZUxNYjJBdWYyRDA/view?usp=sharing
+
+The images corresponding to the closest words to the cluster centers would be generated in words folder.
+Make sure the words folder is created, otherwise an error would occur in between.
